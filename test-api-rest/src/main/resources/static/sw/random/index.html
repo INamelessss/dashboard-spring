@@ -1,0 +1,2962 @@
+<html style="font-size: 28.25px;"><head><style data-merge-styles="true"></style>
+    <style data-merge-styles="true"></style><style data-merge-styles="true"></style><meta charset="utf-8">
+    <title>共享运营平台(代理商)</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <!---CDN加速，有可能被墙--->
+    <!---本地资源文件，无加速--->
+    <link rel="stylesheet" href="../../css/jquery.contextMenu.min.css">
+
+
+    <style type="text/css">
+    body{
+        -webkit-font-smoothing: antialiased !important;
+    }
+    body,.layui-table td, .layui-table th{
+        /*font-size: 13px !important;*/
+    }
+    .radio-red .layui-form-radioed:last-child div{
+        color: red;
+    }
+    .layui-footer{
+        z-index: 9999;
+    }
+    .context-menu-list{
+        padding: 0.35em 0 !important;
+        z-index: 999 !important;
+    }
+    .context-menu-item{
+        padding: 0.45em 2em !important;
+        font-size: 13px;
+    }
+    .search-title{
+        font-size: 12px;
+        color: #666666;
+        padding:0 0 0 2px;
+    }
+
+    /*.layui-layer-dialog .layui-layer-content{*/
+        /*overflow: visible !important;*/
+        /*overflow-x: visible !important;*/
+        /*overflow-y: visible !important;*/
+    /*}*/
+
+    .list-search:after {
+        border-bottom: none !important;
+    }
+
+
+</style>
+    <style type="text/css">
+    html,body{
+        background-color: #0F0F23;
+        /*background-color: #11173a;*/
+        color: #FFFFFF;
+    }
+    .textColor{
+        color: #FFFFFF !important;
+    }
+    .layui-input, .layui-select, .layui-textarea,.layui-laypage button, .layui-laypage input, .layui-table-page select{
+        background-color: #0C0D21;
+        /*background-color: #11173a;*/
+        border-color: #163883;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+
+    .layui-btn{
+       border-radius: 100px !important;
+    }
+    .layui-btn-normal {
+        background-color: #2b74bf !important;
+    }
+
+    .layui-header{
+        z-index: 10004;
+        /*background: lightskyblue !important;*/
+        height: 140px !important;
+        /*opacity: 0.8;*/
+        /*background: #0c1741 url(https://sharingweb.oss-cn-shenzhen.aliyuncs.com/images/aea25f7f44b8060b66418e3b0888140b.png)  no-repeat center center !important;*/
+        /*background-size: contain !important;*/
+        border-bottom: 0 !important;
+        background-color: transparent;
+    }
+
+    /*左侧导航样式*/
+    .layui-side.layui-side-menu{
+        top: 140px !important;
+        background-color: #161632 !important;
+    }
+
+    .layui-nav.layui-nav-tree{
+        margin-top: 0 !important;
+        margin-bottom: 50px !important;
+    }
+    .layui-side-menu .layui-nav .layui-nav-item > a{
+        background-color: transparent;
+    }
+
+    .layui-side-menu .layui-nav .layui-nav-item > a:hover{
+        /*background-color: red;*/
+    }
+    .layui-nav-tree .layui-nav-bar{
+        background-color:#2b74bf;
+    }
+    .layui-nav .layui-nav-child a{
+        color: #FFFFFF !important;
+        cursor: pointer;
+    }
+
+    /*标签栏样式*/
+    .layadmin-pagetabs{
+        top: 140px !important;
+        background-color: #13153A;
+    }
+    .layadmin-pagetabs .layui-tab-title li.layui-this:after{
+        background-color: #00e4ff !important;
+    }
+    .layadmin-pagetabs .layui-icon{
+        /*background-color: #13153A;*/
+        color: #2898E5;
+        font-weight: bold;
+        border-color: rgba(40, 152, 229, 0.33);
+    }
+    .layadmin-pagetabs .layui-tab-title li{
+        border-color: rgba(40, 152, 229, 0.33);
+        letter-spacing: 0.2px;
+    }
+    .layadmin-pagetabs .layui-tab-title li.layui-this, .layadmin-pagetabs .layui-tab-title li:hover{
+        background-color: #242C57;
+        color: #00e4ff !important;
+        letter-spacing: 0.2px;
+    }
+    .layadmin-tabs-control:hover{
+        background: #242C57 !important;
+    }
+    .layadmin-tabs-select.layui-nav .layui-nav-item a{
+        color: #FFFFFF;
+    }
+    .layui-tab-title li .layui-tab-close{
+        color: #FFFFFF;
+    }
+    .layui-tab-title li.layui-this .layui-tab-close{
+        color: #00e4ff !important;
+    }
+    .layui-laypage-limits select{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+
+    /*弹出框样式*/
+    .layui-layer, .layui-nav-child, .layui-form-select dl{
+        /*background-color: #192164EE !important;*/
+        /*border: 2px solid #14a8e07d;*/
+        /*background-color: #1d204eF2 !important;*/
+        background-color: #1d204e !important;
+        border: 2px solid #204180;
+    }
+    .layui-layer-title{
+        background-color: rgba(43, 116, 191, 0.8) !important;
+        color: #FFFFFF !important;
+        border-bottom: 0 !important;
+    }
+
+    .layui-form-select dl dd.layui-this{
+        background-color: #2b74bf;
+    }
+    .layui-form-select dl dd:hover{
+        background-color: rgba(43, 116, 191, 0.33);
+    }
+    .layui-nav-child dd a:hover{
+        background-color: rgba(43, 116, 191, 0.8) !important;
+    }
+    .layui-layer-shade{
+        background-color: #000000!important;
+        opacity: 0.7 !important;
+    }
+    .layui-footer{
+        background-color: #20284E !important;
+        border-top: 1px solid rgba(20, 168, 224, 0.49) !important;
+
+    }
+
+    .layui-body{
+        top: 180px !important;
+    }
+    .layui-layout-admin .layui-header a, .layui-layout-admin .layui-header a cite{
+        color: whitesmoke !important;
+    }
+    .layadmin-pagetabs .layui-tab-title li:after{
+        bottom: 0px !important;
+        top: inherit !important;
+    }
+    .layadmin-pagetabs .layui-tab-title li:first-child{
+        height: 40px !important;
+    }
+    .layadmin-pagetabs .layui-tab{
+        margin-right: 40px;
+    }
+
+    .layui-card{
+        background-color: #0C0D21;
+        /*background-color: #11173a;*/
+        border: 1px solid #1D2865;
+    }
+
+    /*表格样式*/
+    .layui-table{
+        color: #ECECEC;
+        background-color: #0C0D21;
+    }
+    .layui-table-header tr{
+        /*background-color: red   !important;*/
+        color: #ECECEC;
+    }
+    .layui-table-header tr span{
+        font-weight: bold;
+        color: #ECECEC;
+        font-size: 14px;
+        /*border-width: 1px  0 1px  0 !important;*/
+    }
+    .layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin=line], .layui-table[lay-skin=row]{
+        border-color: #163883 !important;
+    }
+    .layui-table tbody tr:hover, .layui-table thead tr, .layui-table-header, .layui-table-mend, .layui-table-patch, .layui-table-total, .layui-table-total tr, .layui-table[lay-even] tr:nth-child(even){
+        background-color: #20284E !important;
+    }
+    .layui-table-click, .layui-table-hover{
+        background-color: transparent;
+    }
+    .layui-table-tool{
+        background-color: #151A33 !important;
+        /*border-width: 1px 0 1px 0 !important;*/
+    }
+    .layui-table-body tr td .layui-btn{
+        background: #2B74BF !important;
+        color: #FFFFFF;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        border: 0;
+        padding: 0 10px;
+    }
+
+    /*分页样式*/
+    .layui-laypage a, .layui-laypage span{
+        font-size: 14px;
+    }
+    .layui-table-page, .layui-table-total{
+        overflow: inherit !important;
+    }
+    .layui-table-page select{
+        height: 26px;
+    }
+    .layui-table-page button{
+        height: 26px;
+        /*background-color: #2b74bf;*/
+        /*border: none;*/
+    }
+
+    /*表单样式*/
+    .layui-form-checkbox[lay-skin=primary] span{
+        color: #FFFFFF !important;
+    }
+
+
+    /*.layui-form.layui-border-box{*/
+    /*    border-top-width:0 !important;*/
+    /*}*/
+
+    .layui-laypage a:hover{
+        color: #ECECEC !important;
+    }
+    .layui-laypage a, .layui-laypage span{
+        color: #ECECEC !important;
+    }
+    .layui-laypage .layui-laypage-curr .layui-laypage-em{
+        background-color:#2b74bf;
+    }
+    .layui-layer.layui-layer-loading{
+        background-color: transparent !important;
+    }
+
+    .layui-layer-ico16, .layui-layer-loading .layui-layer-loading2,.layui-layer-loading .layui-layer-loading1{
+        width: 90px !important;
+        height: 90px !important;
+        background: url(images/jiazai3.svg) no-repeat center center/70% 70% !important;
+    }
+
+    .layui-laypage-spr:nth-child(3):nth-last-child(5){
+        display: none !important;
+    }
+</style>    <style>
+        * {
+            box-sizing: border-box;
+        }
+        @font-face {
+            font-family: electronicFont;
+            src: url(/sw/web/resource/monitor/ROBOTOSLAB-REGULAR.TTF);
+        }
+        li {
+            list-style: none;
+        }
+        ::-webkit-scrollbar
+        {
+            width: 0px;
+        }
+
+        .mainbox {
+            min-width: 1024px;
+            max-width: 1920px;
+            padding: 0.125rem 0.125rem 0;
+            display: flex;
+        }
+
+        .mainbox .column {
+            flex: 3;
+        }
+
+        .mainbox .column:nth-child(2) {
+            flex: 5;
+            margin: 0 0.125rem 0.1875rem;
+            overflow: hidden;
+        }
+
+        .panel {
+            position: relative;
+            height: 3.875rem;
+            border: 1px solid rgba(25, 186, 139, 0.17);
+            padding: 0 0.1875rem 0.5rem;
+            margin-bottom: 0.1875rem;
+        }
+
+        .panel::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+        }
+
+        .panel::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+        }
+
+        .panel .panel-footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .panel .panel-footer::before {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+        }
+
+        .panel .panel-footer::after {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+        }
+
+        .panel h2 {
+            height: 0.6rem;
+            line-height: 0.6rem;
+            text-align: center;
+            color: #fff;
+            font-size: 0.25rem;
+            font-weight: 400;
+        }
+
+        .panel h2 a {
+            margin: 0 0.1875rem;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .panel .chart {
+            height: 3rem;
+        }
+
+        .no {
+            background: rgba(101, 132, 226, 0.1);
+            padding: 0.1875rem;
+        }
+
+        .no .no-hd {
+            position: relative;
+            border: 1px solid rgba(25, 186, 139, 0.17);
+        }
+
+        .no .no-hd::before {
+            content: "";
+            position: absolute;
+            /*width: 30px;*/
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+            top: 0;
+            left: 0;
+        }
+
+        .no .no-hd::after {
+            content: "";
+            position: absolute;
+            /*width: 30px;*/
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+            right: 0;
+            bottom: 0;
+        }
+
+        .no .no-hd ul::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+            top: 0;
+            right: 0;
+        }
+
+        .no .no-hd ul::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+            left: 0;
+            bottom: 0;
+        }
+
+
+        .no .no-hd ul {
+            display: flex;
+        }
+
+        .no .no-hd ul li {
+            position: relative;
+            flex: 1;
+            text-align: center;
+            height: 1rem;
+            line-height: 0.85rem;
+            font-size: 0.75rem;
+            /*color: #ffeb7b;*/
+            color: #FFF;
+            padding: 0.05rem 0;
+            font-family: electronicFont;
+            font-weight: bold;
+        }
+
+        .no .no-hd ul li:first-child::after {
+            content: "";
+            position: absolute;
+            height: 50%;
+            width: 1px;
+            background: rgba(25, 186, 139, 0.17);
+            right: 0;
+            top: 25%;
+        }
+
+        .no .no-bd ul {
+            display: flex;
+        }
+
+        .no .no-bd ul li {
+            flex: 1;
+            height: 0.5rem;
+            line-height: 0.5rem;
+            text-align: center;
+            font-size: 0.225rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-top: 0.125rem;
+        }
+
+        .map {
+            position: relative;
+            height: 10.125rem;
+        }
+
+        .map .chart {
+            position: absolute;
+            top: -5%;
+            left: 0;
+            z-index: 5;
+            height: 10.125rem;
+            width: 100%;
+        }
+
+        .map .map1,
+        .map .map2,
+        .map .map3 {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6.475rem;
+            height: 6.475rem;
+            background: url(../../images/index_map.png) no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.3;
+        }
+
+        .map .map2 {
+            width: 8.0375rem;
+            height: 8.0375rem;
+            background-image: url(images/index_lbx.png);
+            opacity: 0.6;
+            animation: rotate 15s linear infinite;
+            z-index: 2;
+        }
+
+        .map .map3 {
+            width: 7.075rem;
+            height: 7.075rem;
+            background-image: url(images/index_jt.png);
+            animation: rotate1 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rotate1 {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            html {
+                font-size: 42px !important;
+            }
+        }
+
+        @media screen and (min-width: 1920px) {
+            html {
+                font-size: 80px !important;
+            }
+        }
+    </style>
+
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url(images/index_bg.png) no-repeat #000 ;
+            background-size: cover;
+        }
+
+    </style>
+    <style>
+        .panelRotation {
+            height: 7rem;
+            font-size: 0.18rem;
+        }
+        .panelRotation .head{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0.1rem;
+            color: #4D9CFE;
+        }
+        .panelRotation .col:nth-child(1) {
+            width: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        .headPortrait{
+            width: 0.43rem;
+            height: 0.43rem;
+            margin-right: 0.07rem;
+            border-radius: 50%;
+            background: #A1A1A1;
+
+        }
+        .name{
+            width:0.8rem;
+            /*white-space: nowrap;*/
+            /*overflow: hidden;*/
+            /*text-overflow: ellipsis;*/
+        }
+
+        .panelRotation .col:nth-child(2) {
+            width: 1.6rem;
+            text-align: center;
+        }
+        .panelRotation .col:nth-child(3) {
+            width: 1.2rem;
+            text-align: center;
+            /*white-space: nowrap;*/
+            /*overflow: hidden;*/
+            /*text-overflow: ellipsis;*/
+        }
+        .panelRotation .col:nth-child(4) {
+            text-align: right;
+        }
+        .panelRotation .marquee-view{
+            /*height: 6.2rem;*/
+            /*margin-top: 0.3rem;*/
+            height: 6.5rem;
+            margin-top: 0.2rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .panelRotation .row{
+            line-height: 2;
+            /*height: 0.62rem;*/
+            height: 0.6rem;
+            padding: 0 0.1rem;
+            /*color: #61a8ff;*/
+            color: rgba(256,256,256,0.6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panelRotation .row:hover{
+            /*color:#68d8ff;*/
+            color:#61a8ff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes row{
+            0%{}
+            100%{
+                transform: translateY(-50%);
+            }
+        }
+        /*鼠标划入 停止动画  */
+        .panelRotation .marquee:hover {
+            animation-play-state: paused;
+        }
+        .row:nth-last-child(1),.row:nth-last-child(2),.row:nth-last-child(3){
+            color: #61a8ff;
+        }
+        /* 调用动画 */
+        .panelRotation .marquee {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            animation: row  40s linear infinite;
+            /*bottom: -0.62rem;*/
+        }
+        /*.last{*/
+        /*    animation: lastAnimation  10s cubic-bezier(.2,.5,.72,2.56) 1 forwards;*/
+        /*}*/
+        /*@keyframes lastAnimation{*/
+        /*    0%{}*/
+        /*    100%{*/
+        /*        margin-bottom: 0.62rem;*/
+        /*    }*/
+        /*}*/
+    </style>
+    <script src="chrome-extension://nngceckbapebfimnlniiiahkandclblb/content/fido2/page-script.js"></script><style>undefined</style><link id="layuicss-layer" rel="stylesheet" href="https://d.test.dudubox.cn/sw/web/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swa"></head>
+<body style="font-size: 12px;" layadmin-themealias="ocean">
+<header>
+    <div class="left">
+        <!-- 左侧区域 -->
+        <div class="layui-nav-item" lay-unselect="">
+            <!--伸缩菜单-->
+            <div class="layui-nav-item layadmin-flexible" lay-unselect="" style="margin: 10px 0 0 15px">
+                <a style="color: #00e4ff;" href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                    <i class="layui-icon layui-icon-spread-left" style="font-size: 18px" id="LAY_app_flexible"></i>
+                </a>
+            </div>
+
+            <ul class="layui-nav" lay-filter="">
+                <li class="layui-nav-item" lay-unselect="">
+                    <a href="javascript:;">简体中文<span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" onclick="changeLanguage('zh-CN')">简体中文</a></dd>
+                        <dd><a href="javascript:;" onclick="changeLanguage('zh-HK')">繁體中文</a></dd>
+                        <dd><a href="javascript:;" onclick="changeLanguage('en')">English</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" lay-unselect="">
+                    <a href="javascript:openCenterPage('/sw/web/agency/select/list.html', '选择代理商')" title="切换代理商">总部（主账号）<span class="layui-badge-dot"></span></a>
+                </li>
+                <span class="layui-nav-bar"></span></ul>
+        </div>
+    </div>
+    <!-- 中间导航 -->
+    <div class="center">
+        <div class="logo" style="" title="嘟嘟运营平台">
+            <img height="34" src="https://sharingweb.oss-cn-shenzhen.aliyuncs.com/images/df476bf5f7a46186d570fea178afa634.png">
+        </div>
+        <ul class="nav">
+            <li><a class="on" href="/sw/web/monitor/index.html">首页</a></li>
+
+            <li><a class="" href="/sw/web/monitor/statistic.html">交易统计</a></li>
+
+            <li><a class="" href="/sw/web/monitor/device.html">网点设备</a></li>
+
+            <li><a class="" href="/sw/web/index.html">系统管理</a></li>
+        </ul>
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;">更多菜单<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd><a class="on" href="/sw/web/monitor/index.html">首页</a></dd>
+                    <dd><a class="" href="/sw/web/monitor/statistic.html">交易统计</a></dd>
+                    <dd><a class="" href="/sw/web/monitor/device.html">网点设备</a></dd>
+                    <dd><a class="" href="/sw/web/index.html">系统管理</a></dd>
+                </dl>
+            </li>
+            <span class="layui-nav-bar"></span></ul>
+    </div>
+
+    <!-- 右边区域 -->
+    <div class="right">
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;">
+                    <cite><i style="font-size: 15px; margin-right: 4px" class="layui-icon layui-icon-username"></i>何承继</cite>
+                    <span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                    <dd><a href="javascript:openTabPage('https://d.test.dudubox.cn/sw/web/agency/user/detail.html?userId=10000058')">基本资料</a></dd>
+                    <dd onclick="loginOut()"><a href="javascript:;">退出</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;">
+                    <cite>更多</cite>
+                    <span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:changeFullScreen()"><i class="layui-icon">切换全屏</i></a></dd>
+                </dl>
+            </li>
+            <span class="layui-nav-bar" style="top: 38px; width: 0px; left: 20px; opacity: 0;"></span></ul>
+        <a class="version" href="javascript:openCenterPage('/sw/web/index/version.html', '版本信息')">v&nbsp;1.50.0</a>
+
+    </div>
+
+</header>
+
+<style>
+    .layui-nav-child{
+        z-index: 10000;
+    }
+    .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this{
+        background-color: #1d204e !important;
+    }
+    .layui-nav .layui-nav-child dd.layui-this a:hover{
+        background-color: #2b74bf !important;
+    }
+    header{
+        z-index: 99999;
+        display: flex;
+        flex-direction: row;
+        height: 140px;
+        /*overflow-x: auto;*/
+        /*overflow-y: inherit;*/
+    }
+    /*公共导航样式*/
+    header .layui-nav{
+        background: transparent !important;
+        display: inline ;
+
+    }
+
+    header .layui-nav .layui-nav-item a{
+        color: #FFFFFF !important;
+        /*color: #2898E5 !important;*/
+        font-size: 15px !important;
+        max-width: 300px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    header .layui-nav .layui-nav-item .layui-nav-more{
+        /*color: #FFFFFF !important;*/
+        /*border-top-color: #2898E5 !important;*/
+    }
+    header .layui-nav-bar{
+        height: 2px !important;
+    }
+    header .layui-nav .layui-nav-item{
+        line-height: 40px;
+    }
+
+    /*左侧导航样式*/
+    header .left{
+        position: relative;
+        min-width: 480px;
+        height: 140px;
+        background: url(images/header_left.png) no-repeat 0 0;
+        background-size: contain;
+    }
+    header .left .layui-nav{
+        position: absolute;
+        top: 65px;
+    }
+    /*右导航样式*/
+    header .right{
+        position: relative;
+        /*display: inline-block;*/
+        width: 480px;
+        min-width: 480px;
+        height: 140px;
+        background: url(images/header_right.png) no-repeat 0 0;
+        background-size: contain;
+    }
+    header .right .layui-nav{
+        position: absolute;
+        top: 65px;
+        right: 45px;
+    }
+    header .right .version{
+        position: absolute;
+        top: 5px;
+        right: 40px;
+        font-size: 14px;
+        color: #00e4ff;
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+    /*中间导航样式*/
+    header .center{
+        width: 200px;
+        /*height: 100px;*/
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background: url(images/header_center.png) repeat 0 0;
+        background-color: transparent;
+        background-size: contain;
+        padding-top: 35px;
+    }
+    header .center logo{
+        /*display: inline-block;*/
+        display: none;
+    }
+    header .center .nav{
+        display: none;
+        width: 700px;
+        margin-top: 6px;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    header .center .nav li a{
+        font-size: 16px;
+        font-weight: bold;
+        color: #FFFFFF !important;
+        text-shadow: 0 0 30px #000000;
+    }
+    header .center .nav li a.on{
+        color:  #00e4ff !important;
+    }
+    header .center .logo{
+        display: none;
+    }
+    header .center .layui-nav{
+        display: none;
+    }
+
+    @media (max-width:1350px){
+        header .center .layui-nav{
+            display: block;
+        }
+    }
+    @media (min-width:1350px){
+        header .center .nav{
+            display: flex;
+        }
+    }
+    @media (min-width:1700px){
+        header .center .logo{
+            display: inline-block;
+            margin-right: 50px;
+        }
+        header .center ul.nav{
+            display: flex;
+        }
+    }
+    .layui-nav .layui-badge-dot{
+        right:0;
+    }
+    .layui-side.layui-side-menu .layui-nav-item i{
+        font-size: 15px !important;
+        font-weight: bold;
+    }
+
+</style>
+<script>
+    //切换全屏
+    function changeFullScreen() {
+        if(document.isFullScreen || document.mozIsFullScreen || document.webkitIsFullScreen){
+            layui.admin.exitScreen();
+        }
+        else{
+            layui.admin.fullScreen();
+        }
+    }
+
+    //退出登录
+    function loginOut () {
+        layer.confirm('退出当前账号？',{title:'信息',btn:['确定','取消']}, function(index){
+            $.ajax({
+                type: 'GET',
+                url: '/sw/web/loginout',
+                data: {},
+                dataType: 'json',
+                loading: true,
+                errorMsg : true,
+                cache:false,
+                success: function(data){
+                    var data = data.data;
+                    var url = 'https://d.test.dudubox.cn/sw/web/login.html';
+                    window.location.replace(url);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    var data = $.evalJSON(XMLHttpRequest.responseText);
+                    var msg = data.msg || data.data;
+                    $.alert(msg,'请重新扫码租借',function(){
+                        window.location.replace('/sw/app/index.html');
+                    });
+                },
+                complete:function(xhr, status){
+                    layer.close(index);
+                }
+            });
+        });
+    }
+
+    //切换语言
+    function changeLanguage(value) {
+        $.cookie('_language', value, {expires: 720, path: '/'});
+        window.location.reload();
+    }
+
+    //打开新标签页面
+    function openTabPage(url, title) {
+        var topLayui = parent === self ? layui : top.layui;
+        if($('.layadmin-iframe').length > 0){
+            topLayui.index.openTabsPage(url, title);
+        } else {
+            window.location.href = '/sw/web/index.html?_tabsURL=' + encodeURIComponent(url) + '&_tabsTitle=' + encodeURIComponent(title);
+        }
+    }
+
+    //打开中间窗口
+    function openCenterPage(url, title) {
+        var index = layer.open({
+            area: ['60%', '80%'],
+            type: 2,
+            content: url,
+            move: false,
+            title: title || '信息',
+            //closeBtn: 0,
+            anim: -1,
+            isOutAnim:false,
+        });
+    }
+</script><section class="mainbox">
+    <div class="column">
+        <div class="panel bar">
+            <h2>
+                创建订单数
+            </h2>
+            <div class="chart" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1703128210971"><div style="position: relative; width: 481px; height: 126px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="481" height="126" style="position: absolute; left: 0px; top: 0px; width: 481px; height: 126px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel line">
+            <h2>成功订单金额/收益</h2>
+            <div class="chart" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1703128210972"><div style="position: relative; width: 481px; height: 126px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="481" height="126" style="position: absolute; left: 0px; top: 0px; width: 481px; height: 126px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas><canvas data-zr-dom-id="zr_99" width="481" height="126" style="position: absolute; left: 0px; top: 0px; width: 481px; height: 126px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel pie">
+            <h2>代理商数量</h2>
+            <div class="chart" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1703128210973"><div style="position: relative; width: 481px; height: 126px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="481" height="126" style="position: absolute; left: 0px; top: 0px; width: 481px; height: 126px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="no">
+            <div class="no-hd">
+                <ul>
+                    <li class="allFee">140,218.77</li>
+                    <li class="dayFee">0.00</li>
+                </ul>
+            </div>
+            <div class="no-bd">
+                <ul>
+                    <li>总成功订单金额,共6127笔</li>
+                    <li>今日成功订单金额,共0笔</li>
+                </ul>
+            </div>
+        </div>
+        <div class="map">
+            <div class="chart" style="-webkit-tap-highlight-color: transparent; user-select: none;" _echarts_instance_="ec_1703128210970"><div style="position: relative; width: 298px; height: 425px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="298" height="425" style="position: absolute; left: 0px; top: 0px; width: 298px; height: 425px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas><canvas data-zr-dom-id="zr_1" width="298" height="425" style="position: absolute; left: 0px; top: 0px; width: 298px; height: 425px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas><canvas data-zr-dom-id="zr_2" width="298" height="425" style="position: absolute; left: 0px; top: 0px; width: 298px; height: 425px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+            <div class="map1"></div>
+            <div class="map2"></div>
+            <div class="map3"></div>
+            <div onclick="vue1.refrush()" style="position: absolute; top: 60px; right: 0; z-index: 999999; cursor: pointer; color: #ededed99;font-family: layui-icon"> 最后更新：12-21 11:08:22</div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="panel bar1">
+            <h2>设备数量</h2>
+            <div class="chart" style="-webkit-tap-highlight-color: transparent; user-select: none;" _echarts_instance_="ec_1703128210974"><div style="position: relative; width: 188px; height: 126px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="188" height="126" style="position: absolute; left: 0px; top: 0px; width: 188px; height: 126px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+            <div class="panel-footer"></div>
+        </div>
+        <div class="panel" style="height: 7.9375rem">
+            <h2>新增订单</h2>
+            <div class="panelRotation">
+                <div class="head">
+                    <div class="col">用户昵称</div>
+                    <div class="col">订单编号</div>
+                    <div class="col">网点名称</div>
+                    <div class="col">创建时间</div>
+                </div>
+                <div class="marquee-view">
+                    <div class="marquee" id="newOrder">
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008290')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213154321***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">15:43:21</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008291')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">-</div>
+                            </div>
+                            <div class="col">231213154822***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:48:22</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008292')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">-</div>
+                            </div>
+                            <div class="col">231213155241***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:52:41</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008293')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">-</div>
+                            </div>
+                            <div class="col">231213155552***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:55:54</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008294')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213161744***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:17:44</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008295')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213161813***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:18:14</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008296')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213161904***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:19:04</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008297')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162101***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:21:01</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008298')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162127***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:21:28</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008299')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162246***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:22:47</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008300')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162340***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:23:41</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008301')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162428***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:24:29</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008302')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162603***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:26:04</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008303')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162710***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:27:11</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008304')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213162842***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">16:28:43</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008305')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213180350***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:03:58</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008306')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213181623***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:16:31</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008307')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213181711***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:17:19</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008308')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213181834***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:18:43</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008309')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213181911***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:19:19</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008310')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213181933***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:19:40</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008311')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182032***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:20:40</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008312')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182122***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:21:23</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008313')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182154***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:22:00</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008314')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182237***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:22:38</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008315')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182246***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:22:47</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008316')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182319***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:23:20</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008317')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182329***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:23:29</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008318')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213182559***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:25:59</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008319')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/T1AUBmXaxfXXXXXXXX') no-repeat center center/100% 100%"></div>
+                                <div class="name">奈何情深</div>
+                            </div>
+                            <div class="col">231213183730***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:37:31</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008320')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/T1AUBmXaxfXXXXXXXX') no-repeat center center/100% 100%"></div>
+                                <div class="name">奈何情深</div>
+                            </div>
+                            <div class="col">231213183843***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">18:38:44</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008321')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATIrs3SaOBmCUAAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">超</div>
+                            </div>
+                            <div class="col">231214150754***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:07:54</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008322')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231214151041***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:10:42</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008323')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">-</div>
+                            </div>
+                            <div class="col">231214152539***</div>
+                            <div class="col">12345</div>
+                            <div class="col">15:25:40</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008324')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231214153424***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">15:34:25</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008325')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231214153642***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">15:36:43</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008326')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231214154035***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:40:36</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008327')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231214154216***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:42:16</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008328')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231214163157***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">16:26:08</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008329')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">-</div>
+                            </div>
+                            <div class="col">231215194655***</div>
+                            <div class="col">展厅</div>
+                            <div class="col">19:46:56</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008330')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231219112733***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">11:27:43</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008331')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231219112905***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">11:29:14</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008332')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231219113004***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">11:30:12</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008333')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231219113305***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">11:33:13</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008334')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231219113728***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">11:37:37</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008335')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231219155854***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">15:45:18</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008336')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231219160745***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">16:05:59</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008337')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231219162858***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">16:26:11</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008338')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231219170244***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">17:02:44</div>
+                        </div>
+
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008339')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                                <div class="name">啊钦</div>
+                            </div>
+                            <div class="col">231219172633***</div>
+                            <div class="col">测试网点</div>
+                            <div class="col">17:26:34</div>
+                        </div>
+                        <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008290')">
+                            <div class="col">
+                                <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                                <div class="name">刺粼</div>
+                            </div>
+                            <div class="col">231213154321***</div>
+                            <div class="col">测试123</div>
+                            <div class="col">15:43:21</div>
+                        </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008291')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">-</div>
+                        </div>
+                        <div class="col">231213154822***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:48:22</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008292')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">-</div>
+                        </div>
+                        <div class="col">231213155241***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:52:41</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008293')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">-</div>
+                        </div>
+                        <div class="col">231213155552***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:55:54</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008294')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213161744***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:17:44</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008295')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213161813***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:18:14</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008296')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213161904***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:19:04</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008297')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162101***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:21:01</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008298')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162127***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:21:28</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008299')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162246***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:22:47</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008300')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162340***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:23:41</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008301')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162428***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:24:29</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008302')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162603***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:26:04</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008303')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162710***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:27:11</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008304')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213162842***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">16:28:43</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008305')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213180350***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:03:58</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008306')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213181623***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:16:31</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008307')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213181711***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:17:19</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008308')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213181834***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:18:43</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008309')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213181911***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:19:19</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008310')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213181933***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:19:40</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008311')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182032***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:20:40</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008312')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182122***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:21:23</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008313')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182154***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:22:00</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008314')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182237***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:22:38</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008315')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182246***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:22:47</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008316')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182319***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:23:20</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008317')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182329***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:23:29</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008318')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/ic8efLPrwS3rXicFzJlAuTKSIydibawibtJicd9bttSSVd9r2vqcNl3Z5XcxOhrf06qFLtcJw7fqgBrp3phd8NVDwKQ/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231213182559***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:25:59</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008319')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/T1AUBmXaxfXXXXXXXX') no-repeat center center/100% 100%"></div>
+                            <div class="name">奈何情深</div>
+                        </div>
+                        <div class="col">231213183730***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:37:31</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008320')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/T1AUBmXaxfXXXXXXXX') no-repeat center center/100% 100%"></div>
+                            <div class="name">奈何情深</div>
+                        </div>
+                        <div class="col">231213183843***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">18:38:44</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008321')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATIrs3SaOBmCUAAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">超</div>
+                        </div>
+                        <div class="col">231214150754***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:07:54</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008322')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231214151041***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:10:42</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008323')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">-</div>
+                        </div>
+                        <div class="col">231214152539***</div>
+                        <div class="col">12345</div>
+                        <div class="col">15:25:40</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008324')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231214153424***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">15:34:25</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008325')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231214153642***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">15:36:43</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008326')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231214154035***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:40:36</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008327')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231214154216***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:42:16</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008328')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231214163157***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">16:26:08</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008329')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('') no-repeat center center/100% 100%"></div>
+                            <div class="name">-</div>
+                        </div>
+                        <div class="col">231215194655***</div>
+                        <div class="col">展厅</div>
+                        <div class="col">19:46:56</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008330')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231219112733***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">11:27:43</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008331')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231219112905***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">11:29:14</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008332')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231219113004***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">11:30:12</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008333')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231219113305***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">11:33:13</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008334')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://thirdwx.qlogo.cn/mmopen/vi_32/a5FMF6AyAo9gaib9HqFsyx9GG3dg4dic5smoyouXoQvoX1IOL38iaYLnsGicOyaINHZMJeW9uvlzDODDYYnUncJ7Bg/132') no-repeat center center/100% 100%"></div>
+                            <div class="name">刺粼</div>
+                        </div>
+                        <div class="col">231219113728***</div>
+                        <div class="col">测试123</div>
+                        <div class="col">11:37:37</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008335')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231219155854***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">15:45:18</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008336')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231219160745***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">16:05:59</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008337')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231219162858***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">16:26:11</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008338')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231219170244***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">17:02:44</div>
+                    </div><div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId=10008339')">
+                        <div class="col">
+                            <div class="headPortrait" style="background:#A1A1A1 url('https://tfs.alipayobjects.com/images/partner/ATtTIOSrbuEX0AAAAAAAAAAAAADtl2AA') no-repeat center center/100% 100%"></div>
+                            <div class="name">啊钦</div>
+                        </div>
+                        <div class="col">231219172633***</div>
+                        <div class="col">测试网点</div>
+                        <div class="col">17:26:34</div>
+                    </div></div>
+                </div>
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</section>
+<script type="text/html" id="newOrderTemplate">
+    <div class="row" onclick="$.openFullFrame('https://d.test.dudubox.cn/sw/web/rentbox/order/detail.html?orderId={id}')">
+        <div class="col">
+            <div class="headPortrait" style="background:#A1A1A1 url('{avatar}') no-repeat center center/100% 100%"></div>
+            <div class="name">{nickName}</div>
+        </div>
+        <div class="col">{orderUuid}</div>
+        <div class="col">{siteName}</div>
+        <div class="col">{createTime}</div>
+    </div>
+</script>
+
+<script type="text/javascript" src="../../js/flexible.js"></script>
+<script type="text/javascript" src="../../js/echarts.min.js"></script>
+<script src="//duduboxcdn.oss-cn-shenzhen.aliyuncs.com/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/china.js"></script>
+<script type="text/javascript" src="../../js/myMap.js"></script>
+
+<script>
+
+    var initInfoList = [{"todayAgencyFee":"0.06","orderNew":7,"orderCount":7,"orderFee":"0.30","analyDate":"2023-12-14"},{"todayAgencyFee":"0.00","orderNew":1,"orderCount":0,"orderFee":"0.00","analyDate":"2023-12-15"},{"todayAgencyFee":"3.00","orderNew":0,"orderCount":1,"orderFee":"3.00","analyDate":"2023-12-16"},{"todayAgencyFee":"0.00","orderNew":0,"orderCount":0,"orderFee":"0.00","analyDate":"2023-12-17"},{"todayAgencyFee":"0.00","orderNew":0,"orderCount":0,"orderFee":"0.00","analyDate":"2023-12-18"},{"todayAgencyFee":"0.10","orderNew":10,"orderCount":10,"orderFee":"0.50","analyDate":"2023-12-19"},{"todayAgencyFee":"0.00","orderNew":0,"orderCount":0,"orderFee":"0.00","analyDate":"2023-12-20"}];
+    var abnormalDeviceDisplay = 'true';
+    var levels = {"level1":146,"level2":67};
+    var devices = {"all":1733,"lockCount":1,"activationNoSite":36,"activationOnline":6,"allOnline":117,"activationOffline":233,"time":1703128102000,"activation":239,"deviantCount":24,"allOffline":1616};
+    var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    //新增订单数
+    (function () {
+        // 实例化对象
+        var myChart = echarts.init(document.querySelector(".bar .chart"));
+        // 指定配置和数据
+        var option = {
+            color: ["#2f89cf"],
+            tooltip: {
+                trigger: "axis",
+                axisPointer: {
+                    // 坐标轴指示器，坐标轴触发有效
+                    type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: "0%",
+                top: "10%",
+                right: "0%",
+                bottom: "4%",
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: "category",
+                    data: [
+                        initInfoList[0].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[0].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[1].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[1].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[2].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[2].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[3].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[3].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[4].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[4].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[5].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[5].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+                        initInfoList[6].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[6].analyDate.replace(/-/g, "/"))).getDay()] + '  '
+                    ],
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "rgba(255,255,255,.6)",
+                            fontSize: "12"
+                        }
+                    },
+                    axisLine: {
+                        show: false
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: "value",
+                    axisLabel: {
+                        textStyle: {
+                            color: "rgba(255,255,255,.6)",
+                            fontSize: "12"
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: "rgba(255,255,255,.1)"
+                            // width: 1,
+                            // type: "solid"
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: "rgba(255,255,255,.1)"
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: "新增订单数",
+                    type: "bar",
+                    barWidth: "35%",
+                    data: [initInfoList[0].orderNew, initInfoList[1].orderNew, initInfoList[2].orderNew, initInfoList[3].orderNew, initInfoList[4].orderNew, initInfoList[5].orderNew, initInfoList[6].orderNew],
+                    itemStyle: {
+                        barBorderRadius: 5
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        textStyle: {
+                            color: '#fff',
+                        }
+                    },
+                }
+            ]
+        };
+
+        // 把配置给实例对象
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+
+        // 数据变化
+        var dataAll = [
+            {year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600]},
+            {year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700]}
+        ];
+
+        $(".bar h2 ").on("click", "a", function () {
+            option.series[0].data = dataAll[$(this).index()].data;
+            myChart.setOption(option);
+        });
+    })();
+
+    // 完成订单金额/收益
+    (function () {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.querySelector(".line .chart"));
+        myChart.showLoading();
+        // (1)准备数据
+        var data = {
+            year: [
+                // [600, 680, 650, 580, 500, 550, 548],
+                // [12000, 12000, 12000, 12000, 12000, 12000, 12000],
+                [initInfoList[0].todayAgencyFee, initInfoList[1].todayAgencyFee, initInfoList[2].todayAgencyFee, initInfoList[3].todayAgencyFee, initInfoList[4].todayAgencyFee, initInfoList[5].todayAgencyFee, initInfoList[6].todayAgencyFee],
+                [initInfoList[0].orderFee, initInfoList[1].orderFee, initInfoList[2].orderFee, initInfoList[3].orderFee, initInfoList[4].orderFee, initInfoList[5].orderFee, initInfoList[6].orderFee],
+            ]
+        };
+
+        var dateDate=[
+            initInfoList[0].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[0].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[1].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[1].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[2].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[2].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[3].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[3].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[4].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[4].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[5].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[5].analyDate.replace(/-/g, "/"))).getDay()] + '  ',
+            initInfoList[6].analyDate.substring(5) + " \n " + weekDay[new Date(Date.parse(initInfoList[6].analyDate.replace(/-/g, "/"))).getDay()] + '  '
+        ]
+        var coords1=[];
+        for(var i=0;i<dateDate.length;i++){
+            coords1[i]=[];
+            coords1[i][0]=dateDate[i];
+            coords1[i][1]=data.year[1][i];
+        }
+        var coords2=[];
+        for(var i=0;i<dateDate.length;i++){
+            coords2[i]=[];
+            coords2[i][0]=dateDate[i];
+            coords2[i][1]=data.year[0][i];
+        }
+
+
+        // 2. 指定配置和数据
+        var option = {
+            color: ["#00f2f1", "#ed3f35"],
+            tooltip: {
+                // 通过坐标轴来触发
+                trigger: "axis",
+            },
+            legend: {
+                selectedMode: false,
+                // 修饰图例文字的颜色
+                textStyle: {
+                    color: "#4c9bfd"
+                },
+                data:["成功订单金额","成功订单收益"]
+            },
+            grid: {
+                top: "20%",
+                left: "3%",
+                right: "4%",
+                bottom: "3%",
+                show: true,
+                borderColor: "#012f4a",
+                containLabel: true
+            },
+
+            xAxis: {
+                type: "category",
+                boundaryGap: false,
+                data: dateDate,
+                // 去除刻度
+                axisTick: {
+                    show: false
+                },
+                // 修饰刻度标签的颜色
+                axisLabel: {
+                    color: "rgba(255,255,255,.7)"
+                },
+                // 去除x坐标轴的颜色
+                axisLine: {
+                    show: false
+                }
+            },
+            yAxis: {
+                type: "value",
+                // 去除刻度
+                axisTick: {
+                    show: false
+                },
+                // 修饰刻度标签的颜色
+                axisLabel: {
+                    color: "rgba(255,255,255,.7)"
+                },
+                // 修改y轴分割线的颜色
+                splitLine: {
+                    lineStyle: {
+                        color: "#012f4a"
+                    }
+                }
+            },
+            series: [
+                {
+                    name: "成功订单金额",
+                    type: "line",
+                    animationEasing: "bounceOut",
+                    animationDuration: 2000,
+                    // smooth: true,
+                    data: data.year[1],
+                    label: {
+                        show: true,
+                        position: 'top',
+                        // formatter:function(p){
+                        //     return p.data.substring(0,p.data.length-1)
+                        // },
+                        textStyle: {
+                            // color: '#fff',
+                        }
+                    },
+                },
+                {
+                    name: '成功订单金额的光点',
+                    type: 'lines',
+                    coordinateSystem: 'cartesian2d',
+                    symbolSize: 10,
+                    polyline: true,
+                    effect: {
+                        show: true,
+
+                        trailLength: 0,
+                        period: 9, //光点滑动速度
+                        symbolSize: 10,
+                        symbol:'circle'
+                    },
+                    lineStyle: {
+                        normal: {
+                            width: 0,
+                            color: "#00f2f1",
+                            // opacity: 0.6,
+                            curveness: 0.2
+                        }
+                    },
+                    zlevel:99,
+                    data: [{
+                        coords: coords1
+                    }]
+                },
+                {
+                    name: "成功订单收益",
+                    type: "line",
+                    animationEasing: "bounceOut",
+                    animationDuration: 2000,
+                    // 是否让线条圆滑显示
+                    // smooth: true,
+                    data: data.year[0],
+                    label: {
+                        show: true,
+                        position: 'top',
+                        // formatter:function(p){
+                        //     return p.data.substring(0,p.data.length-1)
+                        // },
+                        textStyle: {
+                            // color: '#fff',
+                        }
+                    },
+                },
+                {
+                    name: '成功订单收益的光点',
+                    type: 'lines',
+                    coordinateSystem: 'cartesian2d',
+                    symbolSize: 10,
+                    polyline: true,
+                    effect: {
+                        show: true,
+
+                        trailLength: 0,
+                        period: 9, //光点滑动速度
+                        symbolSize: 10,
+                        symbol:'circle'
+                    },
+                    lineStyle: {
+                        normal: {
+                            width: 0,
+                            color: "#ed3f35",
+                            // opacity: 0.6,
+                            curveness: 0.2
+                        }
+                    },
+                    zlevel:99,
+                    data: [{
+                        coords: coords2
+                    }]
+                },
+
+            ]
+        };
+        // 3. 把配置和数据给实例对象
+        myChart.hideLoading();
+
+        // 重新把配置好的新数据给实例对象
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+    })();
+
+    // 饼形图定制
+    // 代理商数量
+    (function () {
+        var myChart = echarts.init(document.querySelector(".pie .chart"));
+        option = {
+            tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b}: {c} ({d}%)",
+                position: function (p) {
+                    //其中p为当前鼠标的位置
+                    return [p[0] + 10, p[1] - 10];
+                }
+            },
+            legend: {
+                top: "90%",
+                itemWidth: 10,
+                itemHeight: 10,
+                data: ["一级代理", "二级代理"],
+                textStyle: {
+                    color: "rgba(255,255,255,.5)",
+                    fontSize: "12"
+                }
+            },
+
+            series: [
+                {
+                    name: "级别分布",
+                    type: "pie",
+                    center: ["50%", "42%"],
+                    radius: ["40%", "60%"],
+                    color: [
+                        "#065aab",
+                        "#06f0ab"
+                    ],
+                    label:{
+                        show:true,
+                        formatter: "{b}: {c} ({d}%)",
+                    },
+                    labelLine:{
+                        show:true,
+                        length:20,
+                        lenght2:15
+                    },
+                    data: [
+                        {value: levels.level1, name: "一级代理"},
+                        {value: levels.level2, name: "二级代理"}
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+    })();
+
+    // 设备数量
+    (function () {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.querySelector(".bar1 .chart"));
+        var data = [100, (devices.activation/devices.all*100).toFixed(2), (devices.activationOnline/devices.activation*100).toFixed(2), (devices.activationOffline/devices.activation*100).toFixed(2)];
+        var titlename = ["全部设备", "激活设备", "激活在线", "激活离线"];
+        var valdata = [devices.all, devices.activation, devices.activationOnline, devices.activationOffline];
+        var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448"];
+        option = {
+            //图标位置
+            grid: {
+                top: "7%",
+                left: "20%",
+                // right:"10%",
+                bottom: "7%"
+            },
+            xAxis: {
+                show: false
+            },
+            yAxis: [
+                {
+                    show: true,
+                    data: titlename,
+                    inverse: true,
+                    axisLine: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        color: "#fff",
+
+                        rich: {
+                            lg: {
+                                backgroundColor: "#339911",
+                                color: "#fff",
+                                borderRadius: 15,
+                                // padding: 5,
+                                align: "center",
+                                width: 15,
+                                height: 15
+                            }
+                        }
+                    }
+                },
+                {
+                    show: true,
+                    inverse: true,
+                    data: valdata,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            fontSize: 12,
+                            color: "#fff"
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: "条",
+                    type: "bar",
+                    yAxisIndex: 0,
+                    data: data,
+                    barCategoryGap: 50,
+                    barWidth: 10,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius: 20,
+                            color: function (params) {
+                                var num = myColor.length;
+                                return myColor[params.dataIndex % num];
+                            }
+                        }
+                    },
+                },
+                {
+                    name: "框",
+                    type: "bar",
+                    yAxisIndex: 1,
+                    barCategoryGap: 50,
+                    z:10,
+                    data: [
+                        {value:100,num:'100'},
+                        {value:100,num:(devices.activation/devices.all*100).toFixed(1)},
+                        {value:100,num:(devices.activationOnline/devices.activation*100).toFixed(1)},
+                        {value:100,num:(devices.activationOffline/devices.activation*100).toFixed(1)},
+                    ],
+                    barWidth: 15,
+                    itemStyle: {
+                        normal: {
+                            color: "none",
+                            borderColor: "#00c1de",
+                            borderWidth: 3,
+                            barBorderRadius: 15
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            position: "inside",
+                            formatter:function(params){
+                                str = params.data.num+'%'
+                                return str
+                            },
+                        },
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
+    })();
+
+    // 每日新增用户数
+    // (function () {
+    //     // 基于准备好的dom，初始化echarts实例
+    //     var myChart = echarts.init(document.querySelector(".line1 .chart"));
+    //
+    //     option = {
+    //         tooltip: {
+    //             trigger: "axis",
+    //             axisPointer: {
+    //                 lineStyle: {
+    //                     color: "#dddc6b"
+    //                 }
+    //             }
+    //         },
+    //         legend: {
+    //             top: "0%",
+    //             textStyle: {
+    //                 color: "rgba(255,255,255,.5)",
+    //                 fontSize: "12"
+    //             }
+    //         },
+    //         grid: {
+    //             left: "10",
+    //             top: "30",
+    //             right: "10",
+    //             bottom: "10",
+    //             containLabel: true
+    //         },
+    //
+    //         xAxis: [
+    //             {
+    //                 type: "category",
+    //                 boundaryGap: false,
+    //                 axisLabel: {
+    //                     textStyle: {
+    //                         color: "rgba(255,255,255,.6)",
+    //                         fontSize: 12
+    //                     }
+    //                 },
+    //                 axisLine: {
+    //                     lineStyle: {
+    //                         color: "rgba(255,255,255,.2)"
+    //                     }
+    //                 },
+    //
+    //                 data: [
+    //                     "01",
+    //                     "02",
+    //                     "03",
+    //                     "04",
+    //                     "05",
+    //                     "06",
+    //                     "07",
+    //                     "08",
+    //                     "09",
+    //                     "11",
+    //                     "12",
+    //                     "13",
+    //                     "14",
+    //                     "15",
+    //                     "16",
+    //                     "17",
+    //                     "18",
+    //                     "19",
+    //                     "20",
+    //                     "21",
+    //                     "22",
+    //                     "23",
+    //                     "24",
+    //                     "25",
+    //                     "26",
+    //                     "27",
+    //                     "28",
+    //                     "29",
+    //                     "30"
+    //                 ]
+    //             },
+    //             {
+    //                 axisPointer: {show: false},
+    //                 axisLine: {show: false},
+    //                 position: "bottom",
+    //                 offset: 20
+    //             }
+    //         ],
+    //
+    //         yAxis: [
+    //             {
+    //                 type: "value",
+    //                 axisTick: {show: false},
+    //                 axisLine: {
+    //                     lineStyle: {
+    //                         color: "rgba(255,255,255,.1)"
+    //                     }
+    //                 },
+    //                 axisLabel: {
+    //                     textStyle: {
+    //                         color: "rgba(255,255,255,.6)",
+    //                         fontSize: 12
+    //                     }
+    //                 },
+    //
+    //                 splitLine: {
+    //                     lineStyle: {
+    //                         color: "rgba(255,255,255,.1)"
+    //                     }
+    //                 }
+    //             }
+    //         ],
+    //         series: [
+    //             {
+    //                 name: "新增数",
+    //                 type: "line",
+    //                 smooth: true,
+    //                 symbol: "circle",
+    //                 symbolSize: 5,
+    //                 showSymbol: false,
+    //                 lineStyle: {
+    //                     normal: {
+    //                         color: "#0184d5",
+    //                         width: 2
+    //                     }
+    //                 },
+    //                 areaStyle: {
+    //                     normal: {
+    //                         color: new echarts.graphic.LinearGradient(
+    //                             0,
+    //                             0,
+    //                             0,
+    //                             1,
+    //                             [
+    //                                 {
+    //                                     offset: 0,
+    //                                     color: "rgba(1, 132, 213, 0.4)"
+    //                                 },
+    //                                 {
+    //                                     offset: 0.8,
+    //                                     color: "rgba(1, 132, 213, 0.1)"
+    //                                 }
+    //                             ],
+    //                             false
+    //                         ),
+    //                         shadowColor: "rgba(0, 0, 0, 0.1)"
+    //                     }
+    //                 },
+    //                 itemStyle: {
+    //                     normal: {
+    //                         color: "#0184d5",
+    //                         borderColor: "rgba(221, 220, 107, .1)",
+    //                         borderWidth: 12
+    //                     }
+    //                 },
+    //                 data: [
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     60,
+    //                     20,
+    //                     40,
+    //                     20,
+    //                     40,
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     40,
+    //                     30,
+    //                     60,
+    //                     20,
+    //                     40,
+    //                     20,
+    //                     40,
+    //                     30,
+    //                     60,
+    //                     20,
+    //                     40,
+    //                     20,
+    //                     40
+    //                 ]
+    //             }
+    //         ]
+    //     };
+    //
+    //     // 使用刚指定的配置项和数据显示图表。
+    //     myChart.setOption(option);
+    //     window.addEventListener("resize", function () {
+    //         myChart.resize();
+    //     });
+    // })();
+    //
+    // // 网点数量
+    // (function () {
+    //     // 1. 实例化对象
+    //     var myChart = echarts.init(document.querySelector(".pie1  .chart"));
+    //     // 2. 指定配置项和数据
+    //     var option = {
+    //         legend: {
+    //             top: "90%",
+    //             itemWidth: 10,
+    //             itemHeight: 10,
+    //             textStyle: {
+    //                 color: "rgba(255,255,255,.5)",
+    //                 fontSize: "12"
+    //             }
+    //         },
+    //         tooltip: {
+    //             trigger: "item",
+    //             formatter: "{a} <br/>{b} : {c} ({d}%)"
+    //         },
+    //         // 注意颜色写的位置
+    //         color: [
+    //             "#006cff",
+    //             "#60cda0",
+    //             "#ed8884",
+    //             "#ff9f7f",
+    //             "#0096ff",
+    //             "#9fe6b8",
+    //             "#32c5e9",
+    //             "#1d9dff"
+    //         ],
+    //         series: [
+    //             {
+    //                 name: "网点统计",
+    //                 type: "pie",
+    //                 // 如果radius是百分比则必须加引号
+    //                 radius: ["10%", "70%"],
+    //                 center: ["50%", "42%"],
+    //                 roseType: "radius",
+    //                 data: [
+    //                     {value: 20, name: "云南"},
+    //                     {value: 26, name: "北京"},
+    //                     {value: 24, name: "山东"},
+    //                     {value: 25, name: "河北"},
+    //                     {value: 20, name: "江苏"},
+    //                     {value: 25, name: "浙江"},
+    //                     {value: 30, name: "深圳"},
+    //                     {value: 42, name: "广东"}
+    //                 ],
+    //                 // 修饰饼形图文字相关的样式 label对象
+    //                 label: {
+    //                     fontSize: 10
+    //                 },
+    //                 // 修饰引导线样式
+    //                 labelLine: {
+    //                     // 连接到图形的线长度
+    //                     length: 10,
+    //                     // 连接到文字的线长度
+    //                     length2: 10
+    //                 }
+    //             }
+    //         ]
+    //     };
+    //
+    //     // 3. 配置项和数据给我们的实例化对象
+    //     myChart.setOption(option);
+    //     // 4. 当我们浏览器缩放的时候，图表也等比例缩放
+    //     window.addEventListener("resize", function () {
+    //         // 让我们的图表调用 resize这个方法
+    //         myChart.resize();
+    //     });
+    // })();
+
+
+</script>
+<!---CDN加速，有可能被墙--->
+
+<!---本地资源文件，无加速--->
+<script src="../../js/jquery.min.js?v=201905.16"></script>
+<script src="../../js/jquery.cookie.js?v=$201905.16"></script>
+<script src="../../js/jquery.contextMenu.js?v=201905.16"></script>
+<script src="../../js/format.js?v=201905.16"></script>
+<script src="../../js/jquery.extend.js?v=1602238498"></script>
+<script src="../../js/vue.min.js?v=201905.16"></script>
+<script src="../../js/layui.js?v=201905.16"></script>
+
+
+<script>
+    function setlayerConfig(){
+        if(typeof(layer) == 'undefined'){
+            setTimeout(function () {
+                setlayerConfig();
+            }, 200);
+            return;
+        }
+        layer.config({
+            title:'信息',
+            //btn:['确定','取消']
+        });
+    }
+     setlayerConfig();
+</script>
+<script>
+    var LANAGE =new Object();
+    LANAGE.SHURUTISHI_1 = "输入1-10位有效整数";
+    LANAGE.SHURUTISHI_2 = "有效整数范围为0到2147483647";
+    LANAGE.SHURUTISHI_3 = "输入1-19位有效整数";
+    LANAGE.SHURUTISHI_4 = "有效整数范围为0到9223372036854775807";
+    LANAGE.BUTTON_OK = "确定";
+    LANAGE.BUTTON_CANCEL = "取消";
+    LANAGE.NO_NETWORK = "未连接到互联网，请检查网络连接";
+    LANAGE.PAGE_OK = "确定";
+    LANAGE.PAGE_JUMP = "到第";
+    LANAGE.PAGE_PAGE = "页";
+    LANAGE.PAGE_ROWS_PAGE = " 条/页";
+    LANAGE.PAGE_TOTAL = "共";
+    LANAGE.PAGE_ROWS = "条";
+    LANAGE.TABLE_NODATA = "无数据";
+
+    window.oem = function () {
+        window.open('/sw/web/oem.html');
+    }
+
+</script>
+
+
+
+
+
+
+<script>
+    var vue1 = new Vue({
+        el: '#mainbox',
+        data: {
+            oldDataA:[],
+            newDataA:[],
+            jiaoDataA:[],
+            firstLoad:true
+        },
+        methods: {
+            init:function(){
+                vue1.newOrder();
+
+                // $(".allFee").html(vue1.putComma($(".allFee").html()))
+                // $(".dayFee").html(vue1.putComma($(".dayFee").html()))
+            },
+            putComma:function(value){
+                for (var i=6;i<value.length;i+=4){
+                    var value1=value.slice(0,value.length-i);
+                    var value2=value.slice(value.length-i,value.length);
+                    value=value1+","+value2;
+                }
+                return value;
+            },
+            refrush: function () {
+                layer.confirm('更新最新统计数据？',{title:'信息',btn:['确定','取消']}, function(index){
+                    $.ajax({
+                        type: 'GET',
+                        url: '/sw/web/monitor/refresh/index',
+                        data: {},
+                        dataType: 'json',
+                        loading: true,
+                        errorMsg : true,
+                        cache:false,
+                        success: function(data){
+                            layer.closeAll();
+                            window.location.reload();
+                        }
+                    });
+                });
+            },
+            newOrder:function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/sw/web/rentbox/order/carousel',
+                    dataType: 'json',
+                    loading: false,
+                    errorMsg : false,
+                    cache:false,
+                    success: function(data){
+                        console.log(new Date().getTime(),444)
+                        var result = data.data;
+                        result=result.reverse()
+                        var orderHtml="";
+                        for (var i in result){
+                            var html=$("#newOrderTemplate").html();
+                            html=html.format(result[i]);
+                            orderHtml+=html;
+                        }
+                        $("#newOrder").html(orderHtml);
+                        $('.marquee').each(function (index, dom) {
+                            //将每个 的所有子级都复制一遍
+                            var rows = $(dom).children().clone();
+                            //再将新的到的加入原来的
+                            $(dom).append(rows);
+                        });
+                        // if (vue1.firstLoad){
+                        //     result.splice(11,result.length-11);//第一次取最新11个
+                        //     result=result.reverse();//最新的在下面
+                        //     vue1.newDataA=result;//存新数组
+                        //     // console.log("初始化",result)
+                        //     var orderHtml="";
+                        //     for (var i in result){
+                        //         var html=$("#newOrderTemplate").html();
+                        //         html=html.format(result[i]);
+                        //         orderHtml+=html;
+                        //     }
+                        //     $("#newOrder").html(orderHtml);
+                        //     $(".row:last-child").addClass("last");//最后一行加动画
+                        //     vue1.firstLoad=false;
+                        // }else {
+                        //     result.splice(10,result.length-10);//取最新10个
+                        //     result=result.reverse();//最新的在下面
+                        //     vue1.newDataA=result;//存新数组
+                        //     // console.log("新",vue1.newDataA)
+                        //     // console.log("旧",vue1.oldDataA)
+                        //     for (var i in vue1.newDataA){
+                        //         if (vue1.oldDataA[vue1.oldDataA.length-1].borrow_time == vue1.newDataA[i].borrow_time){
+                        //             // console.log("交",vue1.newDataA.slice(Number(i)+1))
+                        //             vue1.jiaoDataA=vue1.jiaoDataA.concat(vue1.newDataA.slice(Number(i)+1));
+                        //             // console.log("新订单数组",vue1.jiaoDataA)
+                        //         }
+                        //         //暂不考虑一次有10个以上的订单
+                        //     }
+                        // }
+                        // vue1.oldDataA=vue1.newDataA;//旧数组
+                    },
+                    error:function () {
+                        console.log(new Date().getTime(),"失败")
+                    }
+                });
+            },
+            // orderAnimation:function () {
+            //     // console.log("新订单数组",vue1.jiaoDataA)
+            //     if (vue1.jiaoDataA.length>0){
+            //         var html=$("#newOrderTemplate").html();
+            //         html=html.format(vue1.jiaoDataA[0]);//新订单中的第一个(时间最旧的那个)
+            //         $(".row:last-child").removeClass("last");
+            //
+            //         $("#newOrder").append(html)
+            //         $(".row:last-child").addClass("last");
+            //         $("#newOrder .row:first-child").remove();//删除最上面的订单
+            //         vue1.jiaoDataA.splice(0,1)
+            //     }
+            // }
+        }
+    });
+    vue1.init();
+    setInterval(function () {
+        vue1.newOrder();
+    },20000);
+    // setInterval(function () {
+    //     vue1.orderAnimation();
+    // },5000);
+</script>
+
+
+
+<script>
+    layui.config({base: '/sw/web/layuiadmin/'});
+    layui.extend({index: 'lib/index'});
+    layui.use(['index'], function () {
+
+    });
+</script>
+
+
+
+
+
+<div id="volume-booster-visusalizer">
+    <div class="sound">
+        <div class="sound-icon"></div>
+        <div class="sound-wave sound-wave_one"></div>
+        <div class="sound-wave sound-wave_two"></div>
+        <div class="sound-wave sound-wave_three"></div>
+    </div>
+    <div class="segments-box">
+        <div data-range="1-20" class="segment"><span></span></div>
+        <div data-range="21-40" class="segment"><span></span></div>
+        <div data-range="41-60" class="segment"><span></span></div>
+        <div data-range="61-80" class="segment"><span></span></div>
+        <div data-range="81-100" class="segment"><span></span></div>
+    </div>
+</div><style id="LAY_layadmin_theme">.layui-side-menu,.layui-layer-admin .layui-layer-title,.layadmin-side-shrink .layui-side-menu .layui-nav>.layui-nav-item>.layui-nav-child{background-color:#344058 !important;}.layui-nav-tree .layui-this,.layui-nav-tree .layui-this>a,.layui-nav-tree .layui-nav-child dd.layui-this,.layui-nav-tree .layui-nav-child dd.layui-this a{background-color:#2b74bf !important;}.layui-layout-admin .layui-logo{background-color:#2b74bf !important;}</style></body><editor-card style="position:absolute;top:0px;left:0px;z-index:auto;display: block !important"><div dir="ltr" style="all: initial;"><div style="color: initial; font: initial; font-palette: initial; font-synthesis: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation-composition: initial; animation: initial; app-region: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: initial; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; math-depth: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-clip-margin: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: absolute; quotes: initial; r: initial; resize: initial; rotate: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-timeline: initial; scrollbar-gutter: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; white-space: initial; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"><link rel="stylesheet" href="chrome-extension://gpaiobkfhnonedkhhfjpmhdalgeoebfa/fonts/fabric-icons.css"><div style="all: initial;"></div></div><div style="color: initial; font: initial; font-palette: initial; font-synthesis: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation-composition: initial; animation: initial; app-region: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: initial; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; math-depth: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-clip-margin: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: absolute; quotes: initial; r: initial; resize: initial; rotate: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-timeline: initial; scrollbar-gutter: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; white-space: initial; timeline-scope: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"><link rel="stylesheet" href="chrome-extension://gpaiobkfhnonedkhhfjpmhdalgeoebfa/fonts/fabric-icons.css"></div><div id="editorNotificationContainer" style="color: initial; font: initial; font-palette: initial; font-synthesis: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation-composition: initial; animation: initial; app-region: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; baseline-source: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; bottom: 0px; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: flex; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-direction: column-reverse; flex-wrap: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphenate-character: initial; hyphenate-limit-chars: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; initial-letter: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; left: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: 1em; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; math-depth: initial; math-shift: initial; math-style: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-clip-margin: initial; overflow-wrap: initial; overflow: initial; overlay: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: fixed; quotes: initial; r: initial; resize: initial; right: 0px; rotate: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scroll-timeline: initial; scrollbar-gutter: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; white-space: initial; timeline-scope: initial; top: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; view-timeline: initial; view-transition-name: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"></div></div></editor-card></html>
